@@ -1,23 +1,28 @@
-/*
- * Copyright (c) 2022, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+/**
+ * Copyright (c) 2022, WSO2 LLC. (https://www.wso2.com) All Rights Reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * WSO2 LLC. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
  * You may obtain a copy of the License at
  *
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
 
 package org.wso2.carbon.securevault.azure.repository;
 
 import com.azure.core.exception.ResourceNotFoundException;
 import com.azure.security.keyvault.secrets.SecretClient;
+
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -120,6 +125,7 @@ public class AzureSecretRepository implements SecretRepository {
      * @param alias The name and version (the latter is optional) of the secret being retrieved.
      * @return The secret corresponding to the alias from the Key Vault. If not found, returns an empty String.
      */
+    @SuppressFBWarnings(value = "CRLF_INJECTION_LOGS")
     @Override
     public String getSecret(String alias) {
 
@@ -161,6 +167,7 @@ public class AzureSecretRepository implements SecretRepository {
      *
      * @return encrypted value of secret stored in Key Vault if encryption has been enabled.
      */
+    @SuppressFBWarnings(value = "CRLF_INJECTION_LOGS")
     @Override
     public String getEncryptedData(String alias) {
 
@@ -232,6 +239,7 @@ public class AzureSecretRepository implements SecretRepository {
      * @param alias The name and version (the latter is optional) of the secret being retrieved.
      * @return the secret value retrieved from the Key Vault.
      */
+    @SuppressFBWarnings(value = "CRLF_INJECTION_LOGS")
     private String retrieveSecretFromVault(String alias) throws AzureSecretRepositoryException {
 
         String secretValue = StringUtils.EMPTY;
@@ -270,6 +278,7 @@ public class AzureSecretRepository implements SecretRepository {
      * @return An array comprising the name and version of the secret.
      * @throws AzureSecretRepositoryException If parsing of the secret reference failed.
      */
+    @SuppressFBWarnings(value = "CRLF_INJECTION_LOGS")
     private SecretReference parseSecretReference(String alias) throws AzureSecretRepositoryException {
 
         if (StringUtils.isNotEmpty(alias)) {
