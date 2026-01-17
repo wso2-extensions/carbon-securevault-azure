@@ -109,6 +109,33 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${maven.spotbugs.plugin.version}</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <xmlOutput>true</xmlOutput>
+                    <failOnError>false</failOnError>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>analyze-compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -253,9 +280,10 @@
             </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>annotations</artifactId>
-            <version>${findbugs.annotation.version}</version>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+            <version>${spotbugs.annotation.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -303,7 +331,7 @@
         <com.squareup.okhttp3.okhttp.version>4.9.3</com.squareup.okhttp3.okhttp.version>
         <com.squareup.okio.version>2.10.0</com.squareup.okio.version>
         <commons.lang.version>2.6.0.wso2v1</commons.lang.version>
-        <findbugs.annotation.version>3.0.1</findbugs.annotation.version>
+        <spotbugs.annotation.version>4.7.3</spotbugs.annotation.version>
         <io.projectreactor.reactor.core.version>3.4.18</io.projectreactor.reactor.core.version>
         <org.jetbrains.kotlin.stdlib.version>1.6.21</org.jetbrains.kotlin.stdlib.version>
         <org.reactivestreams.version>1.0.3</org.reactivestreams.version>
@@ -316,10 +344,7 @@
         <maven.surefire.plugin.version>2.22.0</maven.surefire.plugin.version>
         <maven.bundle.plugin.version>5.1.4</maven.bundle.plugin.version>
 
-        <!--The FindBugs plugin version specified in the parent pom is 3.0.3,
-        which is incompatible with Maven version 3.6.0+. The following overrides
-        the version to overcome this issue.-->
-        <maven.findbugsplugin.version>3.0.5</maven.findbugsplugin.version>
+        <maven.spotbugs.plugin.version>4.7.3.4</maven.spotbugs.plugin.version>
 
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
