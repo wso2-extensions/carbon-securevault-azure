@@ -22,7 +22,7 @@
 
     <groupId>org.wso2.carbon</groupId>
     <artifactId>org.wso2.carbon.securevault.azure</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2</version>
     <packaging>bundle</packaging>
 
     <parent>
@@ -36,7 +36,7 @@
         <developerConnection>scm:git:https://github.com/wso2-extensions/carbon-securevault-azure.git
         </developerConnection>
         <connection>scm:git:https://github.com/wso2-extensions/carbon-securevault-azure.git</connection>
-        <tag>HEAD</tag>
+        <tag>v1.0.2</tag>
     </scm>
 
     <build>
